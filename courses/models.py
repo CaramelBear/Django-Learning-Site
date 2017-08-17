@@ -9,3 +9,16 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Step(models.Model):
+    title = models.CharField(max_length=255)
+    description= models.CharField(max_length=255)
+    order = models.IntegerField(default =0)
+    course = models.ForeignKey(Course)
+
+    class Meta:
+        ordering = ['order',]
+
+    def __str__(self):
+        return self.title
